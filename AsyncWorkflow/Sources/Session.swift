@@ -14,7 +14,7 @@ import Foundation
 /// working towards a common goal. More complicated workflows may choose to create
 /// "isolated sessions" that eventually come together at the end of a workflow.
 
-public class Session: NSObject {
+public final class Session: NSObject {
 
     public let name: String
 

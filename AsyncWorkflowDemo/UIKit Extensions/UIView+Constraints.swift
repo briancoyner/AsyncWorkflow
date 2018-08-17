@@ -1,6 +1,6 @@
 //
 //  Created by Brian Coyner on 1/24/16.
-//  Copyright © 2016 High Rail, LLC. All rights reserved.
+//  Copyright © 2016 Brian Coyner. All rights reserved.
 //
 
 import UIKit

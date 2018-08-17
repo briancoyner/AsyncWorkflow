@@ -17,6 +17,8 @@
 		5D968BC1211BEBA3005DE5FA /* WorkflowStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D968BBB211BEBA3005DE5FA /* WorkflowStrategy.swift */; };
 		5D968BC2211BEBA3005DE5FA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D968BBC211BEBA3005DE5FA /* Session.swift */; };
 		5DA37434211F6417002A8AF7 /* MultipleDelayedOperationWorkflowStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA37433211F6417002A8AF7 /* MultipleDelayedOperationWorkflowStrategy.swift */; };
+		5DD1D33E2128521D00135150 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1D33C2128521D00135150 /* LICENSE */; };
+		5DD1D33F2128521D00135150 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1D33D2128521D00135150 /* README.md */; };
 		5DD5A8F0211D1C7700E6524A /* OperationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5A8EF211D1C7700E6524A /* OperationsProvider.swift */; };
 		5DD5A8F2211D1E6C00E6524A /* DemoWorkflowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5A8F1211D1E6C00E6524A /* DemoWorkflowViewController.swift */; };
 		5DD5A8F4211D283900E6524A /* UIStackView+ConvenienceInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD5A8F3211D283900E6524A /* UIStackView+ConvenienceInitializers.swift */; };
@@ -82,6 +84,8 @@
 		5D968BBB211BEBA3005DE5FA /* WorkflowStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkflowStrategy.swift; sourceTree = "<group>"; };
 		5D968BBC211BEBA3005DE5FA /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		5DA37433211F6417002A8AF7 /* MultipleDelayedOperationWorkflowStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleDelayedOperationWorkflowStrategy.swift; sourceTree = "<group>"; };
+		5DD1D33C2128521D00135150 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		5DD1D33D2128521D00135150 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		5DD5A8EF211D1C7700E6524A /* OperationsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsProvider.swift; sourceTree = "<group>"; };
 		5DD5A8F1211D1E6C00E6524A /* DemoWorkflowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWorkflowViewController.swift; sourceTree = "<group>"; };
 		5DD5A8F3211D283900E6524A /* UIStackView+ConvenienceInitializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ConvenienceInitializers.swift"; sourceTree = "<group>"; };
@@ -132,7 +136,8 @@
 		5D604EA7211BEA830002C109 = {
 			isa = PBXGroup;
 			children = (
-				5DD5A8F9211D2E5000E6524A /* Default-568h@2x.png */,
+				5DD1D33C2128521D00135150 /* LICENSE */,
+				5DD1D33D2128521D00135150 /* README.md */,
 				5D604EB2211BEA840002C109 /* AsyncWorkflowDemo */,
 				5D968BAB211BEB4D005DE5FA /* AsyncWorkflow */,
 				5D604EB1211BEA840002C109 /* Products */,
@@ -204,6 +209,7 @@
 			children = (
 				5D604EBA211BEA840002C109 /* Assets.xcassets */,
 				5D604EBC211BEA840002C109 /* LaunchScreen.storyboard */,
+				5DD5A8F9211D2E5000E6524A /* Default-568h@2x.png */,
 				5D604EBF211BEA840002C109 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -380,6 +386,8 @@
 			files = (
 				5D604EBE211BEA840002C109 /* LaunchScreen.storyboard in Resources */,
 				5D604EBB211BEA840002C109 /* Assets.xcassets in Resources */,
+				5DD1D33F2128521D00135150 /* README.md in Resources */,
+				5DD1D33E2128521D00135150 /* LICENSE in Resources */,
 				5DD5A8FA211D2E5000E6524A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,7 +593,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KC5B683642;
 				INFOPLIST_FILE = AsyncWorkflowDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.highrailcompany.AsyncWorkflowDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -601,7 +612,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KC5B683642;
 				INFOPLIST_FILE = AsyncWorkflowDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.highrailcompany.AsyncWorkflowDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -623,7 +637,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AsyncWorkflow/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.highrailcompany.AsyncWorkflow;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -649,7 +667,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AsyncWorkflow/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.highrailcompany.AsyncWorkflow;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

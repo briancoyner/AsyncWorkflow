@@ -1,6 +1,6 @@
 //
 //  Created by Brian Coyner on 8/9/18.
-//  Copyright © 2018 High Rail, LLC. All rights reserved.
+//  Copyright © 2018 Brian Coyner. All rights reserved.
 //
 
 import Foundation
@@ -30,6 +30,7 @@ final class DelayedIterationOperation: WorkflowOperation {
 extension DelayedIterationOperation {
 
     override func doMain(with session: Session) {
+
         progress.totalUnitCount = Int64(iterations)
 
         for iteration in 0..<iterations {

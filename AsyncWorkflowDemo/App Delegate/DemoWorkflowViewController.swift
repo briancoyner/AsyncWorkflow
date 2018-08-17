@@ -1,6 +1,6 @@
 //
 //  Created by Brian Coyner on 8/9/18.
-//  Copyright © 2018 High Rail, LLC. All rights reserved.
+//  Copyright © 2018 Brian Coyner. All rights reserved.
 //
 
 import Foundation
@@ -89,8 +89,46 @@ extension DemoWorkflowViewController {
             return
         }
 
+        //
+        // STEP 1:
+        // Create a "controller" operation that executes the operations
+        // provided by the strategy. Remember that the "controller" operation
+        // owns a private operation queue, which makes managing/ cancelling the
+        // strategy's super easy.
+        //
+
         let operation = WorkflowControllerOperation(strategy: workflowStrategy)
+
+        //
+        // STEP 2:
+        // Register a completion block (this is part of the `NSOperation` API.
+        // In production, developers should first check the session for an `error`.
+        // If there is not an error, then pull out the "answer" from the workflow.
+        //
+        // Remember to dispatch to the main queue if you need to display the "answer"
+        // to the user.
+        //
+        // This demo implementation does not include a convenience "delegate" API on
+        // the workflow controller.
+        //
+        // The delegate API could have a few methods:
+        // - will start executing workflow (includes access to the controller's root `Progress`)
+        // - did cancel workflow
+        // - did complete executing workflow (with error)
+        //
+
         operation.completionBlock = { [weak self] in
+
+            // STEP 4:
+            // The workflow completed.
+            //
+            // Remember to:
+            // - check for cancelation/ errors
+            // - dispatch any UI related work to the main queue
+            //
+            // Review the note above about adding a delegate API.
+            //
+
             let session = operation.session
             print("Session Details: \(session.copyOfSessionInfo()); Error: \(String(describing: session.error))")
 
@@ -98,6 +136,15 @@ extension DemoWorkflowViewController {
                 self?.state = .idle
             }
         }
+
+        //
+        // STEP 3:
+        // Execute the workflow by submitting the controller operation to queue.
+        // What queue you submit to depends on your app's architecture. For this demo,
+        // a new operation is created each time the workflow executes. This works well
+        // for a demo, but not production. In the end it's up to your app's architectural
+        // requirements on how to set up and manage your queues.
+        //
 
         let operationQueue = OperationQueue()
         state = .busy(operationQueue, operation.progress)

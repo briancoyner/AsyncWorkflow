@@ -1,6 +1,6 @@
 //
 //  Created by Brian Coyner on 10/31/15.
-//  Copyright © 2015 High Rail, LLC. All rights reserved.
+//  Copyright © 2015 Brian Coyner. All rights reserved.
 //
 
 import Foundation
