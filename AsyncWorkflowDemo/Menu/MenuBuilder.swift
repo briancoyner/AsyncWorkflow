@@ -7,5 +7,8 @@ import Foundation
 
 protocol MenuBuilder {
 
-    static func makeMenu() -> [Menu]
+    /// The title of the view controller displaying the `[Menu]`.
+    var title: String { get }
+
+    func makeMenu() -> [Menu]
 }

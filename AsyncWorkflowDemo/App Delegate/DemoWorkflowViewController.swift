@@ -7,6 +7,7 @@ import Foundation
 import UIKit
 
 import AsyncWorkflow
+import CircularProgress
 
 /// A very simple view controller that executes an async workflow on
 /// a privately owned operation queue. Progress is tracked using
@@ -16,7 +17,7 @@ final class DemoWorkflowViewController: UIViewController {
 
     fileprivate enum State {
         case idle
-        case busy(OperationQueue, Progress)
+        case busy(OperationQueue, Progress, NSKeyValueObservation)
     }
 
     fileprivate var state: State = .idle {
@@ -53,6 +54,9 @@ extension DemoWorkflowViewController {
         let contentView = makeContentView()
         view.addSubview(contentView)
         NSLayoutConstraint.activate([
+
+            progressView.heightAnchor.constraint(equalTo: progressView.widthAnchor, multiplier: 0.6),
+
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
@@ -147,7 +151,11 @@ extension DemoWorkflowViewController {
         //
 
         let operationQueue = OperationQueue()
-        state = .busy(operationQueue, operation.progress)
+        let observation = operation.progress.observe(\Progress.fractionCompleted) { (observedProgress, _) in
+            self.progressView.setState(.progress(FractionCompleted(observedProgress.fractionCompleted)), animated: true)
+        }
+
+        state = .busy(operationQueue, operation.progress, observation)
         operationQueue.addOperation(operation)
     }
 
@@ -155,7 +163,7 @@ extension DemoWorkflowViewController {
     fileprivate func userTappedCancel() {
         print("User tapped cancel")
         switch state {
-        case .busy(let operationQueue, _):
+        case .busy(let operationQueue, _, _):
             // Cancelling does not immediately transition to the `.idle` state
             // because the workflow may take a bit to actually end all operations.
             // Once the workflow completes, the state transitions  to `.idle`.
@@ -171,7 +179,7 @@ extension DemoWorkflowViewController {
 
     fileprivate func transition(from oldState: State, to newState: State) {
         switch (oldState, newState) {
-        case (.idle, .busy(_, let progress)):
+        case (.idle, .busy(_, let progress, _)):
             transitionToBusyState(observing: progress)
         case (.busy, .idle):
             transitionToIdleState()
@@ -181,7 +189,6 @@ extension DemoWorkflowViewController {
     }
 
     fileprivate func transitionToIdleState() {
-        progressView.observedProgress = nil
         statusLabel.text = "Tap to execute"
 
         cancelButton.isHidden = true
@@ -189,7 +196,6 @@ extension DemoWorkflowViewController {
     }
 
     fileprivate func transitionToBusyState(observing progress: Progress) {
-        progressView.observedProgress = progress
         statusLabel.text = "executing..."
 
         cancelButton.isHidden = false
@@ -223,8 +229,10 @@ extension DemoWorkflowViewController {
 
 extension DemoWorkflowViewController {
 
-    fileprivate func lazyProgressView() -> UIProgressView {
-        let progressView = UIProgressView(progressViewStyle: .default)
+    fileprivate func lazyProgressView() -> CircularProgressView {
+        let progressView = CircularProgressView(strategy: BasicCircularProgressViewStrategy(
+            additionalContentLayoutStrategy: LocalizedProgressAdditionalContentLayoutStrategy()
+        ))
         progressView.translatesAutoresizingMaskIntoConstraints = false
 
         return progressView

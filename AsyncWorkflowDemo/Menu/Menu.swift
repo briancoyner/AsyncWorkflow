@@ -6,6 +6,11 @@
 import Foundation
 
 struct Menu {
-    let title: String
+    let title: String?
     let items: [MenuItem]
+
+    init(title: String? = nil, items: [MenuItem]) {
+        self.title = title
+        self.items = items
+    }
 }

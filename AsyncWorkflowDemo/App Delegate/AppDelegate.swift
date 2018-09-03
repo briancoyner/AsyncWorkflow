@@ -19,15 +19,16 @@ extension AppDelegate {
     ) -> Bool {
 
         //
-        // This app is displays a simple "menu" of options that execute different types of
-        // async workflows.
+        // This app displays a simple "menu" of options for playing around with
+        // async workflow demos and circular progress view demos.
         //
         // See the `AsyncDemoMenuBuilder` for additional details.
         //
 
-        let menuViewController = MenuViewController(title: "Async Demos", menus: AsyncDemoMenuBuilder.makeMenu())
+        let menuViewController = MenuViewController(menuBuilder: MainMenuBuilder())
         let navigationController = UINavigationController(rootViewController: menuViewController)
         navigationController.navigationBar.prefersLargeTitles = true
+
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 

@@ -7,7 +7,9 @@ import Foundation
 
 struct AsyncDemoMenuBuilder: MenuBuilder {
 
-    static func makeMenu() -> [Menu] {
+    let title = "Async Workflows"
+
+    func makeMenu() -> [Menu] {
         return [
             Menu(title: "Progress Examples", items: [
                 MenuItem(title: "Simple Operation Workflow", viewControllerProvider: {

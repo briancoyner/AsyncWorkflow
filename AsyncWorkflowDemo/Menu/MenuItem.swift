@@ -7,6 +7,7 @@ import Foundation
 import UIKit
 
 struct MenuItem {
+
     let title: String
     let viewControllerProvider: () -> UIViewController
 }

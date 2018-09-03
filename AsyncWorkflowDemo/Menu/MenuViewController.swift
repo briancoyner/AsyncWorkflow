@@ -10,12 +10,12 @@ final class MenuViewController: UITableViewController {
 
     fileprivate let menus: [Menu]
 
-    init(title: String, menus: [Menu]) {
-        self.menus = menus
+    init(menuBuilder: MenuBuilder) {
+        self.menus = menuBuilder.makeMenu()
 
         super.init(style: .grouped)
 
-        self.title = title
+        self.title = menuBuilder.title
     }
 
     required init?(coder aDecoder: NSCoder) {
